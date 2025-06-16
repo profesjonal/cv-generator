@@ -127,6 +127,10 @@
   a:hover {
     text-decoration: underline;
   }
+  #pay-button {
+    display: none;
+    margin-top: 1rem;
+  }
 </style>
 </head>
 <body>
@@ -168,7 +172,7 @@
   <section>
     <h2>Formularz zgłoszeniowy</h2>
     <form id="application-form" method="POST" action="https://formspree.io/f/movwwbza" novalidate>
-      
+  
       <label for="name">Imię i nazwisko *</label>
       <input type="text" id="name" name="name" placeholder="Jan Kowalski" required aria-required="true" />
 
@@ -187,64 +191,7 @@
       <input type="text" id="industry" name="industry" placeholder="Twoja branża" />
 
       <label for="message">Wiadomość / dodatkowe informacje</label>
-      <textarea id="message" name="message" placeholder="Napisz, czego oczekujesz lub podaj dodatkowe dane"></textarea>
+      <textarea id="message" name="message" placeholder="Np. jakieś szczegóły dotyczące zamówienia"></textarea>
 
       <button type="submit">Wyślij zgłoszenie</button>
-    </form>
-
-    <div id="form-messages" role="alert" aria-live="polite" style="margin-top:1rem;"></div>
-  </section>
-
-  <section>
-    <h2>Kontakt i bezpieczeństwo</h2>
-    <p>Twoje dane są bezpieczne i wykorzystywane wyłącznie do obsługi zamówienia. Nie udostępniamy ich osobom trzecim.</p>
-    <p>Masz pytania? Napisz do nas: <a href="mailto:kontakt@cvgen.pl">kontakt@cvgen.pl</a></p>
-  </section>
-
-</main>
-
-<footer>
-  &copy; 2025 CV & List Motywacyjny. Wszelkie prawa zastrzeżone.
-</footer>
-
-<script>
-  const form = document.getElementById('application-form');
-  const formMessages = document.getElementById('form-messages');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    formMessages.textContent = '';
-    formMessages.className = '';
-
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData
-      });
-
-      if (response.ok) {
-        formMessages.textContent = 'Dziękujemy za zgłoszenie! Skontaktujemy się z Tobą wkrótce.';
-        formMessages.className = 'success-message';
-        form.reset();
-      } else {
-        const data = await response.json();
-        if (data.errors) {
-          formMessages.textContent = data.errors.map(error => error.message).join(', ');
-        } else {
-          formMessages.textContent = 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.';
-        }
-        formMessages.className = 'error-message';
-      }
-    } catch (error) {
-      formMessages.textContent = 'Błąd sieci. Sprawdź połączenie i spróbuj ponownie.';
-      formMessages.className = 'error-message';
-    }
-  });
-</script>
-
-</body>
-</html>
+    </form

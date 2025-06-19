@@ -198,7 +198,8 @@
   <section>
     <h2>Kontakt i bezpieczeństwo</h2>
     <p>Twoje dane są bezpieczne i wykorzystywane wyłącznie do obsługi zamówienia. Nie udostępniamy ich osobom trzecim.</p>
-    <p>Masz pytania? Napisz do nas: <a href="mailto:kontakt@cvgen.pl">kontakt@cvgen.pl</a></p>
+    <p>Masz pytania? Napisz do nas: <a href="mailto:cvpro@onet.pl">cvpro@onet.pl</a></p>
+    <p><small>Administratorem danych osobowych jest CV & List Motywacyjny. Dane przetwarzane są zgodnie z obowiązującymi przepisami RODO.</small></p>
   </section>
 
 </main>
@@ -212,7 +213,6 @@
   const form = document.getElementById('application-form');
   const formMessages = document.getElementById('form-messages');
 
-  // Twoje linki Stripe do checkout
   const stripePublicKey = "pk_live_51RajAdAE6sx15mG2yR2phxh9tgRWwzXavtu5QMl7Q2yk1G4u9Y2NqrYQEAezG0DZfp4J3HBCp5k2FJNolmpY3isQ00yUT09Z5G";
   const stripe = Stripe(stripePublicKey);
 
@@ -226,7 +226,6 @@
     formMessages.textContent = '';
     formMessages.className = '';
 
-    // Sprawdź walidację formularza
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
@@ -235,55 +234,35 @@
     const formData = new FormData(form);
     const service = formData.get('service');
 
-    // Jeśli pakiet Basic — wyślij formularz na maila (np. przez Formspree)
-    if (service === 'basic') {
-      try {
-        const response = await fetch('https://formspree.io/f/movwwbza', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
-        });
+    try {
+      const response = await fetch('https://formspree.io/f/movwwbza', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
 
-        if (response.ok) {
-          formMessages.textContent = 'Dziękujemy za zgłoszenie! Szablon zostanie wysłany na Twój email.';
-          formMessages.className = 'success-message';
-          form.reset();
-        } else {
-          const data = await response.json();
-          formMessages.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Błąd wysyłania formularza.';
-          formMessages.className = 'error-message';
-        }
-      } catch (error) {
-        formMessages.textContent = 'Błąd sieci. Spróbuj ponownie.';
+      if (response.ok) {
+        formMessages.textContent = 'Dziękujemy za zgłoszenie! Skontaktujemy się z Tobą wkrótce.';
+        formMessages.className = 'success-message';
+        form.reset();
+      } else {
+        const data = await response.json();
+        formMessages.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Błąd wysyłania formularza.';
         formMessages.className = 'error-message';
       }
-      return;
+    } catch (error) {
+      formMessages.textContent = 'Błąd sieci. Spróbuj ponownie.';
+      formMessages.className = 'error-message';
+      return; // jeśli błąd, nie idziemy dalej
     }
 
-    // Dla pakietów Standard i Premium przekieruj do Stripe Checkout
+    // Po wysłaniu formularza przekieruj do płatności, jeśli usługa płatna
     if (service === 'standard' || service === 'premium') {
       const checkoutUrl = checkoutLinks[service];
-      if (!checkoutUrl) {
-        formMessages.textContent = 'Wybrano nieobsługiwany pakiet.';
-        formMessages.className = 'error-message';
-        return;
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
       }
-
-      // Tu możesz wysłać dane formularza do swojego backendu lub logiki obsługi przed płatnością (opcjonalne)
-
-      // Przekierowanie do Stripe Checkout (otworzy link w nowej karcie)
-      window.open(checkoutUrl, '_blank');
-
-      formMessages.textContent = 'Po dokonaniu płatności wróć i wyślij formularz, aby dokończyć zgłoszenie.';
-      formMessages.className = 'note';
-
-      // Dla większej wygody można włączyć wysyłanie formularza po powrocie, ale to wymaga backendu i webhooków Stripe
-
-      return;
     }
-
-    formMessages.textContent = 'Proszę wybrać usługę.';
-    formMessages.className = 'error-message';
   });
 </script>
 

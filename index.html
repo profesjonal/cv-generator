@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Profesjonalne CV i List Motywacyjny - Usługi korekty i pisania</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  header {
+    background: #4a90e2;
+    color: white;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+  }
+  main {
+    max-width: 720px;
+    margin: 2rem auto 3rem;
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.12);
+  }
+  section {
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1.2rem;
+  }
+  p, ul {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  ul {
+    padding-left: 1.3rem;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  button {
+    background-color: #4a90e2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #357abd;
+  }
+  .note {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+  .pricing {
+    border: 1px solid #4a90e2;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    background-color: #e8f0fe;
+    margin-bottom: 1rem;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+    padding: 1.2rem 1rem;
+    border-top: 1px solid #ddd;
+  }
+  .success-message,
+  .error-message {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Profesjonalne CV i List Motywacyjny</h1>
+  <p>Wzory, korekta oraz indywidualne przygotowanie dokumentów aplikacyjnych dopasowanych do Twojej branży</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>Dlaczego warto skorzystać?</h2>
+    <p>Nasze usługi pomogą Ci wyróżnić się na rynku pracy. Dokumenty, które przygotujemy, będą:</p>
+    <ul>
+      <li>czytelne i profesjonalne,</li>
+      <li>dopasowane do specyfiki branży i stanowiska,</li>
+      <li>poprawne językowo i merytorycznie,</li>
+      <li>gotowe do natychmiastowego użycia.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Oferta usług</h2>
+    <div class="pricing">
+      <strong>Pakiet Basic - <em>Darmowy szablon</em></strong>
+      <p>Otrzymujesz gotowy szablon CV i listu motywacyjnego, który samodzielnie uzupełnisz.</p>
+    </div>
+    <div class="pricing">
+      <strong>Pakiet Standard - 39 zł</strong>
+      <p>Korekta i optymalizacja Twoich dokumentów przez eksperta. Zwiększ swoje szanse na rozmowę kwalifikacyjną.</p>
+    </div>
+    <div class="pricing">
+      <strong>Pakiet Premium - 79 zł</strong>
+      <p>Indywidualne napisanie CV i listu motywacyjnego dostosowanego do wybranej branży i stanowiska.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Formularz zgłoszeniowy</h2>
+    <form id="application-form" novalidate>
+      
+      <label for="name">Imię i nazwisko *</label>
+      <input type="text" id="name" name="name" placeholder="Jan Kowalski" required aria-required="true" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="_replyto" placeholder="jan.kowalski@email.com" required aria-required="true" />
+
+      <label for="service">Wybierz usługę *</label>
+      <select id="service" name="service" required aria-required="true">
+        <option value="" disabled selected>-- Wybierz pakiet --</option>
+        <option value="basic">Pakiet Basic (Darmowy szablon)</option>
+        <option value="standard">Pakiet Standard (Korekta dokumentów) - 39 zł</option>
+        <option value="premium">Pakiet Premium (Indywidualne CV i list) - 79 zł</option>
+      </select>
+
+      <label for="industry">Branża (np. budownictwo, IT, bankowość)</label>
+      <input type="text" id="industry" name="industry" placeholder="Twoja branża" />
+
+      <label for="message">Wiadomość / dodatkowe informacje</label>
+      <textarea id="message" name="message" placeholder="Napisz, czego oczekujesz lub podaj dodatkowe dane"></textarea>
+
+      <button type="submit">Wyślij zgłoszenie</button>
+    </form>
+
+    <div id="form-messages" role="alert" aria-live="polite" style="margin-top:1rem;"></div>
+  </section>
+
+  <section>
+    <h2>Kontakt i bezpieczeństwo</h2>
+    <p>Twoje dane są bezpieczne i wykorzystywane wyłącznie do obsługi zamówienia. Nie udostępniamy ich osobom trzecim.</p>
+    <p>Masz pytania? Napisz do nas: <a href="mailto:cvpro@onet.pl">cvpro@onet.pl</a></p>
+    <p><small>Administratorem danych osobowych jest CV & List Motywacyjny. Dane przetwarzane są zgodnie z obowiązującymi przepisami RODO.</small></p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 CV & List Motywacyjny. Wszelkie prawa zastrzeżone.
+</footer>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const form = document.getElementById('application-form');
+  const formMessages = document.getElementById('form-messages');
+
+  const stripePublicKey = "pk_live_51RajAdAE6sx15mG2yR2phxh9tgRWwzXavtu5QMl7Q2yk1G4u9Y2NqrYQEAezG0DZfp4J3HBCp5k2FJNolmpY3isQ00yUT09Z5G";
+  const stripe = Stripe(stripePublicKey);
+
+  const checkoutLinks = {
+    standard: "https://buy.stripe.com/3cI6oGbdOcYH0Xm0MP5c400",
+    premium: "https://buy.stripe.com/6oUeVc4Pqf6P49y5355c401"
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMessages.textContent = '';
+    formMessages.className = '';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const service = formData.get('service');
+
+    try {
+      const response = await fetch('https://formspree.io/f/movwwbza', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+
+      if (response.ok) {
+        formMessages.textContent = 'Dziękujemy za zgłoszenie! Skontaktujemy się z Tobą wkrótce.';
+        formMessages.className = 'success-message';
+        form.reset();
+      } else {
+        const data = await response.json();
+        formMessages.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Błąd wysyłania formularza.';
+        formMessages.className = 'error-message';
+      }
+    } catch (error) {
+      formMessages.textContent = 'Błąd sieci. Spróbuj ponownie.';
+      formMessages.className = 'error-message';
+      return; // jeśli błąd, nie idziemy dalej
+    }
+
+    // Po wysłaniu formularza przekieruj do płatności, jeśli usługa płatna
+    if (service === 'standard' || service === 'premium') {
+      const checkoutUrl = checkoutLinks[service];
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
